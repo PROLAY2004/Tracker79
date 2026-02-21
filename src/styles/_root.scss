@@ -1,0 +1,55 @@
+// Import all of Bootstrap’s CSS
+// @import "bootstrap/scss/bootstrap";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f8f9fb;
+    color: #1f2937;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #111827;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #111827;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .btn-primary {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+}
+
+/* Optional: subtle scrollbar styling */
+.table::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}

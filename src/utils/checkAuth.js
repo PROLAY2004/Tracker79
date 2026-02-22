@@ -1,6 +1,6 @@
 export default function isAuthenticated() {
-	const accessToken = localStorage.getItem('access_token');
-	const refreshToken = localStorage.getItem('refresh_token');
+	const accessToken = localStorage.getItem('T79_access_token');
+	const refreshToken = localStorage.getItem('T79_refresh_token');
 
 	if (accessToken && refreshToken) {
 		return true;

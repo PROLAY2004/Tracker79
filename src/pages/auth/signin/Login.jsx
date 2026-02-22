@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Auth from './AuthPage.jsx';
+import Auth from '../AuthPage.jsx';
 
 function Signin() {
 	return (

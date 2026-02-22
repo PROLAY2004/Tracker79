@@ -151,6 +151,10 @@
     border: none;
     padding: 14px;
     border-radius: 14px;
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;

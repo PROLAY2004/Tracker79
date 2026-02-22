@@ -1,14 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
+
+import ProtectedRoute from './ProtectedRoute.jsx';
 import Signin from '../pages/auth/signin/Login';
 import Signup from '../pages/auth/signup/Register';
 import Forget from '../pages/auth/reset/Forget';
-import Home from '../components/Home';
 import ErrorPage from '../components/DefaultPage';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Home />,
+		element: <ProtectedRoute />,
 	},
 	{
 		path: '/login',
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/dashboard',
-		element: <h1>Dashboard</h1>,
+		element: (
+			<ProtectedRoute>
+				<h1>Dashboard</h1>
+			</ProtectedRoute>
+		),
 	},
 	{
 		path: '*',

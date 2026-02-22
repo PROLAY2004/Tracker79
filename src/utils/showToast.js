@@ -13,5 +13,5 @@ export default function showToast(type, message) {
 
 	setTimeout(() => {
 		toastContainer.innerHTML = '';
-	}, 3000);
+	}, 5000);
 }

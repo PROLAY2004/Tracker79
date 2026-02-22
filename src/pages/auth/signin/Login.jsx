@@ -56,7 +56,7 @@ function Signin() {
 								<input type="checkbox" />
 								Remember me
 							</label>
-							<Link to="#" className="link">
+							<Link to="/forget-password" className="link">
 								Forgot password?
 							</Link>
 						</div>

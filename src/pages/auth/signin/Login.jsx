@@ -1,7 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 import Auth from '../AuthPage.jsx';
+import handleFormLogin from './submitLogin.js';
 
 function Signin() {
+	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
+
+	const handleLogin = async (e) => {
+		e.preventDefault();
+
+		const isLogedin = await handleFormLogin(e, setLoading);
+
+		if (isLogedin) {
+			navigate('/dashboard', { replace: true });
+		}
+	};
+
 	return (
 		<div className="auth-container">
 			<Auth />
@@ -13,15 +29,26 @@ function Signin() {
 						Login to continue tracking your investments
 					</p>
 
-					<form>
+					<form onSubmit={handleLogin}>
 						<div className="auth-group">
 							<label>Email</label>
-							<input type="email" placeholder="you@example.com" required />
+							<input
+								type="email"
+								name="email"
+								placeholder="you@example.com"
+								required
+							/>
 						</div>
 
 						<div className="auth-group">
 							<label>Password</label>
-							<input type="password" placeholder="••••••••" required />
+							<input
+								name="password"
+								type="password"
+								placeholder="••••••••"
+								autoComplete="password"
+								required
+							/>
 						</div>
 
 						<div className="auth-row">
@@ -34,8 +61,17 @@ function Signin() {
 							</Link>
 						</div>
 
-						<button className="auth-btn-primary" type="submit">
-							Login
+						<button
+							disabled={loading}
+							className="auth-btn-primary"
+							type="submit">
+							{loading ? (
+								<>
+									<span className="spinner"></span> Signing in...
+								</>
+							) : (
+								'Sign in'
+							)}
 						</button>
 					</form>
 

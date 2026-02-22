@@ -2,12 +2,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Auth from '../AuthPage.jsx';
-import handleSubmit from './submitForm.js';
+import handleSubmit from './submitRegister.js';
 import handleVerify from './verifyForm.js';
 import resendOtp from './resendOtp.js';
 
 function Signup() {
-	const OTP_DURATION = 5 * 60; // 5 minutes in seconds
+	const OTP_DURATION = 5 * 60;
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
 	const [otpForm, setOtpForm] = useState(false);
@@ -90,7 +90,10 @@ function Signup() {
 							/>
 						</div>
 
-						<button disabled={loading} className="auth-btn-primary">
+						<button
+							disabled={loading}
+							className="auth-btn-primary"
+							type="submit">
 							{loading ? (
 								<>
 									<span className="spinner"></span> Signing up...
@@ -132,7 +135,10 @@ function Signup() {
 							/>
 						</div>
 
-						<button disabled={loading} className="auth-btn-primary">
+						<button
+							disabled={loading}
+							className="auth-btn-primary"
+							type="submit">
 							{loading ? (
 								<>
 									<span className="spinner"></span> Verifying...

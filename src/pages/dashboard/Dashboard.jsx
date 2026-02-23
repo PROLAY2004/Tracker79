@@ -1,28 +1,33 @@
+import { useNavigate } from 'react-router-dom';
+
 import '../../styles/dashboard.scss';
+import Card from '../../components/Cards';
+import logout from './logout.js';
 
 function Dashboard() {
+	const navigate = useNavigate();
+
+	const userLogout = () => {
+		const isSuccess = logout();
+
+		if (isSuccess) {
+			navigate('/login', { replace: true });
+		}
+	};
+
 	return (
 		<div className="main-content">
 			<header className="navbar">
 				<h1 className="logo">Tracker79</h1>
-				<button className="btn-secondary logout-btn">Logout</button>
+				<button className="logout-btn" onClick={userLogout}>
+					Logout
+				</button>
 			</header>
 
 			<section className="summary">
-				<div className="analytics-card">
-					<p>Total Invested</p>
-					<h2>₹4,50,000</h2>
-				</div>
-
-				<div className="analytics-card">
-					<p>Total Gold</p>
-					<h2>72.35 gm</h2>
-				</div>
-
-				<div className="analytics-card">
-					<p>Avg Return</p>
-					<h2 className="positive">+12.4%</h2>
-				</div>
+				<Card title={'Total Invested'} value={'₹4,50,000'} />
+				<Card title={'Total Gold'} value={'72.35 gm'} />
+				<Card title={'Avg Return'} value={'+12.4%'} color="positive" />
 			</section>
 
 			<div className="section-action">

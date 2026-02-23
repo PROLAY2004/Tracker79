@@ -56,7 +56,7 @@ function Signin() {
 
 						<div className="auth-row">
 							<label className="checkbox">
-								<input type="checkbox" name="remember" checked />
+								<input type="checkbox" name="remember" defaultChecked />
 								Remember me
 							</label>
 							<Link to="/forget-password" className="link">

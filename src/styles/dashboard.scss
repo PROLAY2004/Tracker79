@@ -134,10 +134,19 @@
 /* ===============================
    Logout Button
    =============================== */
-.logout-btn {
-    background: #f6f4f3;
-    color: #111827;
+.logout-btn{
+    background: #fff5f5;
+    color: #b91c1c;
+
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+
+    padding: 10px 18px;
+    font-size: 14px;
     font-weight: 500;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
 /* ===============================
@@ -183,6 +192,7 @@
     color: #ffffff;
     border-color: #111827;
 }
+
 /* ===============================
    Responsive (Scrollable Table)
    =============================== */
@@ -281,4 +291,3 @@
         font-size: 16px;
     }
 }
-

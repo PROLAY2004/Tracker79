@@ -55,13 +55,15 @@
     background: #ffffff;
     border-radius: 14px;
     overflow: hidden;
+    overflow-x: auto;
 }
 
 .table-header,
 .table-row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     padding: 14px 20px;
+    min-width: 720px;
 }
 
 .table-header {
@@ -70,10 +72,15 @@
     font-size: 14px;
 }
 
+.table-header span:nth-child(5),
+.table-header span:nth-child(5) {
+    min-width: 135px;
+}
 .table-row {
     border-top: 1px solid #e5e7eb;
     font-size: 14px;
 }
+
 
 .positive {
     color: #059669;
@@ -134,7 +141,7 @@
 /* ===============================
    Logout Button
    =============================== */
-.logout-btn{
+.logout-btn {
     background: #fff5f5;
     color: #b91c1c;
 
@@ -193,6 +200,41 @@
     border-color: #111827;
 }
 
+.action-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Edit */
+.edit-btn {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.edit-btn:hover {
+    background: #e5e7eb;
+}
+
+/* Delete */
+.delete-btn {
+    background: #fff5f5;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+.delete-btn:hover {
+    background: #fee2e2;
+}
 /* ===============================
    Responsive (Scrollable Table)
    =============================== */
@@ -207,14 +249,8 @@
         padding: 0 20px 30px;
     }
 
-    .table {
-        overflow-x: auto;
+                .table {
         -webkit-overflow-scrolling: touch;
-    }
-
-    .table-header,
-    .table-row {
-        min-width: 680px;
     }
 
     .modal {
@@ -263,10 +299,6 @@
         gap: 10px;
     }
 
-    .table-header,
-    .table-row {
-        min-width: 640px;
-    }
 }
 
 @media (max-width: 320px) {
@@ -280,11 +312,6 @@
 
     .analytics-card {
         padding: 18px;
-    }
-
-    .table-header,
-    .table-row {
-        min-width: 620px;
     }
 
     .modal h3 {

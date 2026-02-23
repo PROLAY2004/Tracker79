@@ -1,6 +1,4 @@
 function Card(cardDetails) {
-	if (cardDetails.className) {
-	}
 	return (
 		<div className="analytics-card">
 			<p>{cardDetails.title}</p>

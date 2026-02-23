@@ -1,11 +1,23 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import '../../styles/dashboard.scss';
-import Card from '../../components/Cards';
+import Card from '../../components/Cards.jsx';
+import List from '../../components/Lists.jsx';
+import AddModal from '../../components/AddModal.jsx';
 import logout from './logout.js';
 
 function Dashboard() {
 	const navigate = useNavigate();
+	const [addModal, setaddModal] = useState(false);
+
+	function displayAddModal() {
+		setaddModal(true);
+	}
+
+	function closeModal() {
+		setaddModal(false);
+	}
 
 	const userLogout = () => {
 		const isSuccess = logout();
@@ -31,9 +43,11 @@ function Dashboard() {
 			</section>
 
 			<div className="section-action">
-				<span className="section-title">Investment History</span>
+				<h3>Investment History</h3>
 
-				<button className="btn-primary">Add Data</button>
+				<button className="btn-primary" onClick={displayAddModal}>
+					Add Data
+				</button>
 			</div>
 
 			<section className="list-section">
@@ -44,31 +58,30 @@ function Dashboard() {
 						<span>Gold (gm)</span>
 						<span>Return %</span>
 						<span>Return % (No Tax)</span>
+						<span>Actions</span>
 					</div>
 
-					<div className="table-row">
-						<span>12 Jan 2025</span>
-						<span>₹1,50,000</span>
-						<span>24.15</span>
-						<span className="positive">+10.8%</span>
-						<span className="positive">+14.1%</span>
-					</div>
-
-					<div className="table-row">
-						<span>05 Nov 2024</span>
-						<span>₹2,00,000</span>
-						<span>32.80</span>
-						<span className="positive">+13.6%</span>
-						<span className="positive">+16.9%</span>
-					</div>
-
-					<div className="table-row">
-						<span>18 Jul 2024</span>
-						<span>₹1,00,000</span>
-						<span>15.40</span>
-						<span className="negative">-2.1%</span>
-						<span className="positive">+1.2%</span>
-					</div>
+					<List
+						date="12 Jan 2025"
+						amount="₹1,50,000"
+						gold="24.15"
+						returnPercentage="+10.8%"
+						returnPercentageNoTax="+14.1%"
+					/>
+					<List
+						date="05 Nov 2024"
+						amount="₹2,00,000"
+						gold="32.80"
+						returnPercentage="+13.6%"
+						returnPercentageNoTax="+16.9%"
+					/>
+					<List
+						date="18 Jul 2024"
+						amount="₹1,00,000"
+						gold="15.40"
+						returnPercentage="-2.1%"
+						returnPercentageNoTax="+1.2%"
+					/>
 				</div>
 
 				<div className="pagination">
@@ -79,6 +92,8 @@ function Dashboard() {
 					<button className="page-btn">›</button>
 				</div>
 			</section>
+
+			<AddModal display={addModal} closeModal={closeModal} />
 		</div>
 	);
 }

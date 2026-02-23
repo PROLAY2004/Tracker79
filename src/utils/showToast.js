@@ -1,4 +1,4 @@
-import ToastTemplate from '../templates/ToastTemplate';
+import ToastTemplate from '../templates/ToastTemplate.js';
 
 const displayToast = new ToastTemplate();
 

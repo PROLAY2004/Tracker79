@@ -1,16 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute.jsx';
-import Signin from '../pages/auth/signin/Login';
-import Signup from '../pages/auth/signup/Register';
-import Forget from '../pages/auth/reset/Forget';
+import Home from '../components/Home.jsx';
+import Signin from '../pages/auth/signin/Login.jsx';
+import Signup from '../pages/auth/signup/Register.jsx';
+import Forget from '../pages/auth/reset/Forget.jsx';
 import Dashboard from '../pages/dashboard/Dashboard.jsx';
 import ErrorPage from '../components/DefaultPage';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <ProtectedRoute />,
+		element: <Home/>
 	},
 	{
 		path: '/login',

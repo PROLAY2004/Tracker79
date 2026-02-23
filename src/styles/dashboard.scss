@@ -73,8 +73,12 @@
 }
 
 .table-header span:nth-child(5),
-.table-header span:nth-child(5) {
+.table-row span:nth-child(5) {
     min-width: 135px;
+}
+.table-header span:last-child,
+.table-row span:last-child {
+    min-width: 175px;
 }
 .table-row {
     border-top: 1px solid #e5e7eb;
@@ -138,9 +142,22 @@
     margin-top: 20px;
 }
 
-/* ===============================
-   Logout Button
-   =============================== */
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+
+    background-color: #ffffff;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
 .logout-btn {
     background: #fff5f5;
     color: #b91c1c;
@@ -219,6 +236,7 @@
 .edit-btn {
     background: #f3f4f6;
     color: #111827;
+    border-color: #c8caca;
 }
 
 .edit-btn:hover {
@@ -229,11 +247,20 @@
 .delete-btn {
     background: #fff5f5;
     color: #b91c1c;
-    border-color: #fecaca;
+    border-color: #ff3a3a;
 }
 
 .delete-btn:hover {
     background: #fee2e2;
+}
+.view-btn {
+    background: #f3f4f6;
+    color: #111827;
+    border-color: #c8caca;
+}
+
+.view-btn:hover {
+    background: #eef2f7;
 }
 /* ===============================
    Responsive (Scrollable Table)

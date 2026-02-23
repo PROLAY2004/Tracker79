@@ -46,7 +46,7 @@ function Dashboard() {
 				<h3>Investment History</h3>
 
 				<button className="btn-primary" onClick={displayAddModal}>
-					Add Data
+					+ Add Data
 				</button>
 			</div>
 

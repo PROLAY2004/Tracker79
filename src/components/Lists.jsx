@@ -19,6 +19,7 @@ function List(listDetails) {
 				{listDetails.returnPercentageNoTax}
 			</span>
 			<div className="action-btns">
+				<button className="action-btn view-btn">View</button>
 				<button className="action-btn edit-btn">Edit</button>
 				<button className="action-btn delete-btn">Delete</button>
 			</div>

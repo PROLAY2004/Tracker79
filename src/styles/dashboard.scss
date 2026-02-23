@@ -132,6 +132,58 @@
 }
 
 /* ===============================
+   Logout Button
+   =============================== */
+.logout-btn {
+    background: #f6f4f3;
+    color: #111827;
+    font-weight: 500;
+}
+
+/* ===============================
+   Section Action Bar
+   =============================== */
+.section-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ===============================
+   Pagination
+   =============================== */
+.pagination {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.page-btn {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.page-btn.active {
+    background: #111827;
+    color: #ffffff;
+    border-color: #111827;
+}
+/* ===============================
    Responsive (Scrollable Table)
    =============================== */
 
@@ -157,6 +209,18 @@
 
     .modal {
         width: 92%;
+    }
+}
+
+@media (max-width: 640px) {
+    .section-action {
+        padding: 0 20px;
+    }
+
+    .floating-add-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
     }
 }
 
@@ -217,3 +281,4 @@
         font-size: 16px;
     }
 }
+

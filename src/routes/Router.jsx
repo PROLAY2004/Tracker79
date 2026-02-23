@@ -4,6 +4,7 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 import Signin from '../pages/auth/signin/Login';
 import Signup from '../pages/auth/signup/Register';
 import Forget from '../pages/auth/reset/Forget';
+import Dashboard from '../pages/dashboard/Dashboard.jsx';
 import ErrorPage from '../components/DefaultPage';
 
 const router = createBrowserRouter([
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
 		path: '/dashboard',
 		element: (
 			<ProtectedRoute>
-				<h1>Dashboard</h1>
+				<Dashboard />
 			</ProtectedRoute>
 		),
 	},

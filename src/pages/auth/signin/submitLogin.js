@@ -18,8 +18,8 @@ const handleFormLogin = async (e, setLoading) => {
 		const result = await response.json();
 
 		if (result.success) {
-			localStorage.setItem('T79_access_token', result.access_token);
-			localStorage.setItem('T79_refresh_token', result.refresh_token);
+			localStorage.setItem('access_token', result.access_token);
+			localStorage.setItem('refresh_token', result.refresh_token);
 
 			showToast('success', result.message);
 			return true;

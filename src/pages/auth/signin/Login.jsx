@@ -11,9 +11,12 @@ function Signin() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 
+		const isChecked = e.target.remember.checked;
 		const isLogedin = await handleFormLogin(e, setLoading);
 
 		if (isLogedin) {
+			localStorage.setItem('remember_me', isChecked);
+
 			navigate('/dashboard', { replace: true });
 		}
 	};
@@ -53,7 +56,7 @@ function Signin() {
 
 						<div className="auth-row">
 							<label className="checkbox">
-								<input type="checkbox" />
+								<input type="checkbox" name="remember" checked />
 								Remember me
 							</label>
 							<Link to="/forget-password" className="link">

@@ -10,9 +10,7 @@ export default async function apiInterceptor(method, endpoint, body = null) {
 		let response;
 
 		if (!access_token && !refresh_token) {
-			localStorage.setItem('SHF_redirect_route', window.location.pathname);
-
-			window.location.href = '/src/pages/auth/login.html';
+			window.location.href = '/login';
 		}
 
 		switch (method) {
@@ -62,8 +60,8 @@ export default async function apiInterceptor(method, endpoint, body = null) {
 			} else {
 				const result = await res.json();
 
-				localStorage.setItem('SHF_access_token', result.access_token);
-				localStorage.setItem('SHF_refresh_token', result.refresh_token);
+				localStorage.setItem('access_token', result.access_token);
+				localStorage.setItem('refresh_token', result.refresh_token);
 			}
 
 			return apiInterceptor(method, endpoint, body);

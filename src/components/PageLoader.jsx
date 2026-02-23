@@ -1,10 +1,12 @@
 import '../styles/loader.scss';
 
-function Loader() {
+function Loader(data) {
 	return (
-		<div class="app-loader">
-			<div class="loader-card">
-				<div class="spinner"></div>
+		<div
+			className="app-loader"
+			style={{ display: data.display ? 'flex' : 'none' }}>
+			<div className="loader-card">
+				<div className="spinner"></div>
 				<p>Loading, please wait…</p>
 			</div>
 		</div>

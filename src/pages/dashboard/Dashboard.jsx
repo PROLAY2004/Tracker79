@@ -1,34 +1,39 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import '../../styles/dashboard.scss';
 import Card from '../../components/Cards.jsx';
+import Loader from '../../components/PageLoader.jsx';
 import List from '../../components/Lists.jsx';
 import AddModal from '../../components/AddModal.jsx';
+import displayData from './fetchData.js';
 import logout from './logout.js';
+import formatDate from '../../utils/dateFormater.js';
 
 function Dashboard() {
 	const navigate = useNavigate();
 	const [addModal, setaddModal] = useState(false);
-
-	function displayAddModal() {
-		setaddModal(true);
-	}
-
-	function closeModal() {
-		setaddModal(false);
-	}
+	const [loading, setLoading] = useState(false);
+	const [reload, setReload] = useState(0);
+	const [total, setTotal] = useState(0);
+	const [invest, setInvest] = useState(0);
+	const [goldQtn, setGoldQtn] = useState(0);
+	const [records, setRecords] = useState([]);
 
 	const userLogout = () => {
-		const isSuccess = logout();
-
-		if (isSuccess) {
+		if (logout()) {
 			navigate('/login', { replace: true });
 		}
 	};
 
+	useEffect(() => {
+		displayData(setTotal, setInvest, setGoldQtn, setRecords, setLoading);
+	}, [reload]);
+
 	return (
 		<div className="main-content">
+			<Loader display={loading} />
+
 			<header className="navbar">
 				<h1 className="logo">Tracker79</h1>
 				<button className="logout-btn" onClick={userLogout}>
@@ -37,21 +42,24 @@ function Dashboard() {
 			</header>
 
 			<section className="summary">
-				<Card title={'Total Invested'} value={'₹4,50,000'} />
-				<Card title={'Total Gold'} value={'72.35 gm'} />
-				<Card title={'Avg Return'} value={'+12.4%'} color="positive" />
+				<Card title={'Total Invested (Including Tax)'} value={'₹' + total} />
+				<Card title={'Total Invested (Excluding Tax)'} value={'₹' + invest} />
+				<Card title={'Total Gold Quantity'} value={goldQtn + ' gm'} />
+				<Card title={'Avg Return'} value={'+00.0%'} color="positive" />
 			</section>
 
 			<div className="section-action">
 				<h3>Investment History</h3>
 
-				<button className="btn-primary" onClick={displayAddModal}>
-					+ Add Data
+				<button className="btn-primary" onClick={() => setaddModal(true)}>
+					<b>+</b> Add Data
 				</button>
 			</div>
 
 			<section className="list-section">
-				<div className="table">
+				<div
+					className="table"
+					style={{ display: records.length ? 'block' : 'none' }}>
 					<div className="table-header">
 						<span>Date</span>
 						<span>Amount</span>
@@ -61,27 +69,33 @@ function Dashboard() {
 						<span>Actions</span>
 					</div>
 
-					<List
-						date="12 Jan 2025"
-						amount="₹1,50,000"
-						gold="24.15"
-						returnPercentage="+10.8%"
-						returnPercentageNoTax="+14.1%"
-					/>
-					<List
-						date="05 Nov 2024"
-						amount="₹2,00,000"
-						gold="32.80"
-						returnPercentage="+13.6%"
-						returnPercentageNoTax="+16.9%"
-					/>
-					<List
-						date="18 Jul 2024"
-						amount="₹1,00,000"
-						gold="15.40"
-						returnPercentage="-2.1%"
-						returnPercentageNoTax="+1.2%"
-					/>
+					{records.map((record) => {
+						return (
+							<List
+								key={record._id}
+								date={formatDate(record.date)}
+								amount={`₹` + record.total.toFixed(2)}
+								gold={record.gold + ' gm'}
+								returnPercentage="+0%"
+								returnPercentageNoTax="+0%"
+							/>
+						);
+					})}
+				</div>
+
+				<div
+					className="table-empty"
+					style={{ display: records.length ? 'none' : 'flex' }}>
+					<div className="empty-content">
+						<div className="empty-icon">
+							<i className="fa fa-bar-chart"></i>
+						</div>
+						<h3>No records yet</h3>
+						<p>
+							Your gold investment records will appear here once you add your
+							first entry.
+						</p>
+					</div>
 				</div>
 
 				<div className="pagination">
@@ -93,7 +107,11 @@ function Dashboard() {
 				</div>
 			</section>
 
-			<AddModal display={addModal} closeModal={closeModal} />
+			<AddModal
+				display={addModal}
+				closeModal={setaddModal}
+				pageLoader={setReload}
+			/>
 		</div>
 	);
 }

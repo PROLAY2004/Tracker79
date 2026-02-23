@@ -1,4 +1,17 @@
 export default class Api {
+	getApi = async (url, token) => {
+		try {
+			const res = await fetch(url, {
+				method: 'GET',
+				headers: { Authorization: `Bearer ${token}` },
+			});
+
+			return res;
+		} catch (err) {
+			throw new Error(err);
+		}
+	};
+
 	postApi = async (url, token, reqBody = {}) => {
 		try {
 			const res = await fetch(url, {

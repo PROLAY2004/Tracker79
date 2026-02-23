@@ -20,7 +20,7 @@
 /* Summary */
 .summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 32px;
 }
@@ -63,7 +63,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     padding: 14px 20px;
-    min-width: 720px;
+    min-width: 900px;
 }
 
 .table-header {
@@ -76,10 +76,12 @@
 .table-row span:nth-child(5) {
     min-width: 135px;
 }
+
 .table-header span:last-child,
 .table-row span:last-child {
     min-width: 175px;
 }
+
 .table-row {
     border-top: 1px solid #e5e7eb;
     font-size: 14px;
@@ -158,6 +160,7 @@
     cursor: pointer;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
 .logout-btn {
     background: #fff5f5;
     color: #b91c1c;
@@ -173,21 +176,51 @@
     transition: all 0.25s ease;
 }
 
-/* ===============================
-   Section Action Bar
-   =============================== */
 .section-action {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 32px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .section-title {
     font-size: 16px;
     font-weight: 600;
     color: #111827;
+}
+
+.table-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 16px;
+    border-top: 1px solid #eee;
+}
+
+.empty-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.empty-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    opacity: 0.85;
+}
+
+.empty-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 6px;
+}
+
+.empty-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 18px;
 }
 
 /* ===============================
@@ -253,6 +286,7 @@
 .delete-btn:hover {
     background: #fee2e2;
 }
+
 .view-btn {
     background: #f3f4f6;
     color: #111827;
@@ -262,21 +296,24 @@
 .view-btn:hover {
     background: #eef2f7;
 }
+
 /* ===============================
    Responsive (Scrollable Table)
    =============================== */
-
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .summary {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         padding: 24px 20px;
     }
 
+}
+
+@media (max-width: 768px) {
     .list-section {
         padding: 0 20px 30px;
     }
 
-                .table {
+        .table {
         -webkit-overflow-scrolling: touch;
     }
 
@@ -288,6 +325,7 @@
 @media (max-width: 640px) {
     .section-action {
         padding: 0 20px;
+        margin-bottom: 20px;
     }
 
     .floating-add-btn {
@@ -298,6 +336,10 @@
 }
 
 @media (max-width: 480px) {
+    .summary {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
     .navbar {
         padding: 14px 16px;
     }
@@ -308,11 +350,6 @@
 
     .analytics-card h2 {
         font-size: 20px;
-    }
-
-    .table-header,
-    .table-row {
-        font-size: 13px;
     }
 
     .modal {

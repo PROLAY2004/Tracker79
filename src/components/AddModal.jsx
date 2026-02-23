@@ -13,7 +13,18 @@ function AddModal(modalData) {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await addFormSubmit(e, setLoading);
+		const isSubmited = await addFormSubmit(
+			e,
+			setLoading,
+			setTotalAmount,
+			setInvestment,
+			setTax,
+		);
+
+		if (isSubmited) {
+			modalData.closeModal(false);
+			modalData.pageLoader((prev) => prev + 1);
+		}
 	};
 
 	return (
@@ -70,7 +81,7 @@ function AddModal(modalData) {
 					<label>Total Gold Got (gm)</label>
 					<input
 						type="number"
-						step="0.01"
+						step={0.00001}
 						name="gold"
 						placeholder="Eg: 9.500"
 					/>
@@ -81,7 +92,7 @@ function AddModal(modalData) {
 						className="btn-secondary"
 						type="button"
 						style={{ border: 'none' }}
-						onClick={modalData.closeModal}>
+						onClick={() => modalData.closeModal(false)}>
 						Close
 					</button>
 

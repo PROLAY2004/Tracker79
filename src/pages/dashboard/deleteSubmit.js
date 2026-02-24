@@ -5,7 +5,7 @@ export default async function deleteRecord(
 	recordId,
 	setLoading,
 	setReload,
-	delModal,
+	closeModal,
 ) {
 	try {
 		setLoading(true);
@@ -17,7 +17,7 @@ export default async function deleteRecord(
 		const result = await response.json();
 
 		if (result.success) {
-			delModal(false);
+			closeModal(false);
 			setReload((prev) => prev + 1);
 			showToast('success', result.message);
 

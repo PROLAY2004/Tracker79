@@ -4,7 +4,7 @@ import deleteRecord from '../pages/dashboard/deleteSubmit.js';
 function DeleteModal(modalData) {
 	const recordId = modalData.recordId;
 	const setReload = modalData.pageLoader;
-	const delModal = modalData.deleteModal;
+	const closeModal = modalData.closeModal;
 	const [loading, setLoading] = useState(false);
 
 	return (
@@ -32,7 +32,7 @@ function DeleteModal(modalData) {
 						className="btn-danger"
 						type="button"
 						onClick={() =>
-							deleteRecord(recordId, setLoading, setReload, delModal)
+							deleteRecord(recordId, setLoading, setReload, closeModal)
 						}>
 						{loading ? (
 							<>

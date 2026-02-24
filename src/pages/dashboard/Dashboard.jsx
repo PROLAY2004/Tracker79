@@ -6,18 +6,22 @@ import Card from '../../components/Cards.jsx';
 import Loader from '../../components/PageLoader.jsx';
 import List from '../../components/Lists.jsx';
 import AddModal from '../../components/AddModal.jsx';
+import EditModal from '../../components/EditModal.jsx';
 import DeleteModal from '../../components/DeleteModal.jsx';
 import displayData from './fetchData.js';
 import logout from './logout.js';
 
 function Dashboard() {
 	const navigate = useNavigate();
+
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
-	const [addModal, setaddModal] = useState(false);
-	const [delModal, setDelModal] = useState(false)
-	const [recordId, setRecordId] = useState('')
 
+	const [addModal, setaddModal] = useState(false);
+	const [delModal, setDelModal] = useState(false);
+	const [editModal, setEditModal] = useState(false);
+	const [recordId, setRecordId] = useState('');
+	const [recordDetails, setRecordDetails] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [reload, setReload] = useState(0);
 	const [total, setTotal] = useState(0);
@@ -101,6 +105,8 @@ function Dashboard() {
 								key={record._id}
 								record={record}
 								deleteModal={setDelModal}
+								editModal={setEditModal}
+								setRecordDetails={setRecordDetails}
 								setRecordId={setRecordId}
 							/>
 						);
@@ -158,8 +164,14 @@ function Dashboard() {
 				display={delModal}
 				closeModal={setDelModal}
 				recordId={recordId}
-				deleteModal={setDelModal}
 				pageLoader={setReload}
+			/>
+
+			<EditModal
+				display={editModal}
+				closeModal={setEditModal}
+				recordDetails={recordDetails}
+				setRecordDetails={setRecordDetails}
 			/>
 		</div>
 	);

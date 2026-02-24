@@ -14,7 +14,12 @@ function List(listDetails) {
 					<i className="fa fa-eye"></i> View
 				</button>
 
-				<button className="action-btn edit-btn">
+				<button
+					className="action-btn edit-btn"
+					onClick={() => {
+						listDetails.setRecordDetails(listDetails.record);
+						listDetails.editModal(true);
+					}}>
 					<i className="fa fa-edit"></i> Edit
 				</button>
 

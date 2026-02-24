@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import deleteRecord from '../pages/dashboard/deleteSubmit.js';
 
 function DeleteModal(modalData) {
+	const recordId = modalData.recordId;
+	const setReload = modalData.pageLoader;
+	const delModal = modalData.deleteModal;
 	const [loading, setLoading] = useState(false);
 
-    const deleteRecord = () => {
-        console.log('delete record id : ', modalData.recordId);
-    }
-
 	return (
-		<div className="modal-backdrop" style={{display : modalData.display ? 'flex' : 'none'}}>
+		<div
+			className="modal-backdrop"
+			style={{ display: modalData.display ? 'flex' : 'none' }}>
 			<div className="modal delete-modal">
-				<h3>Delete investment</h3>
+				<h3>Delete Investment</h3>
 
 				<p className="delete-text">
 					Are you sure you want to delete this investment?
@@ -19,10 +21,19 @@ function DeleteModal(modalData) {
 				</p>
 
 				<div className="modal-actions">
-					<button className="btn-secondary" type="button" onClick={() => modalData.closeModal(false)}>
+					<button
+						className="btn-secondary"
+						type="button"
+						onClick={() => modalData.closeModal(false)}>
 						Cancel
 					</button>
-					<button disabled={loading} className="btn-danger" type="button" onClick={deleteRecord}>
+					<button
+						disabled={loading}
+						className="btn-danger"
+						type="button"
+						onClick={() =>
+							deleteRecord(recordId, setLoading, setReload, delModal)
+						}>
 						{loading ? (
 							<>
 								<span className="spinner"></span> Deleting...

@@ -45,4 +45,21 @@ export default class Api {
 			throw new Error(err);
 		}
 	};
+
+	deleteApi = async (url, token, reqBody = {}) => {
+		try {
+			const res = await fetch(url, {
+				method: 'DELETE',
+				headers: {
+					Authorization: `Bearer ${token}`,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(reqBody),
+			});
+
+			return res;
+		} catch (err) {
+			throw new Error(err);
+		}
+	};
 }

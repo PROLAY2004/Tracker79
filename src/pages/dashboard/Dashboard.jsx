@@ -67,7 +67,9 @@ function Dashboard() {
 				<h3>Investment History</h3>
 
 				<div className="btn-group">
-					<button className="btn-secondary">
+					<button
+						className="btn-secondary"
+						style={{ display: records.length ? 'block' : 'none' }}>
 						<i className="fa fa-line-chart"></i>
 					</button>
 
@@ -94,11 +96,10 @@ function Dashboard() {
 					</div>
 
 					{records.map((record) => {
-
 						return (
 							<List
 								key={record._id}
-								record = {record}
+								record={record}
 								deleteModal={setDelModal}
 								setRecordId={setRecordId}
 							/>
@@ -140,7 +141,7 @@ function Dashboard() {
 
 					<button
 						className="page-btn"
-						disabled={currentPage === totalPages}
+						disabled={currentPage === totalPages || records.length == 0}
 						onClick={() => setCurrentPage((prev) => prev + 1)}>
 						›
 					</button>
@@ -157,6 +158,8 @@ function Dashboard() {
 				display={delModal}
 				closeModal={setDelModal}
 				recordId={recordId}
+				deleteModal={setDelModal}
+				pageLoader={setReload}
 			/>
 		</div>
 	);

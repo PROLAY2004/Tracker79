@@ -91,7 +91,6 @@ function AddModal(modalData) {
 					<button
 						className="btn-secondary"
 						type="button"
-						style={{ border: 'none' }}
 						onClick={() => modalData.closeModal(false)}>
 						Close
 					</button>

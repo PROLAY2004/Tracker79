@@ -6,15 +6,18 @@ import Card from '../../components/Cards.jsx';
 import Loader from '../../components/PageLoader.jsx';
 import List from '../../components/Lists.jsx';
 import AddModal from '../../components/AddModal.jsx';
+import DeleteModal from '../../components/DeleteModal.jsx';
 import displayData from './fetchData.js';
 import logout from './logout.js';
-import formatDate from '../../utils/dateFormater.js';
 
 function Dashboard() {
 	const navigate = useNavigate();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
 	const [addModal, setaddModal] = useState(false);
+	const [delModal, setDelModal] = useState(false)
+	const [recordId, setRecordId] = useState('')
+
 	const [loading, setLoading] = useState(false);
 	const [reload, setReload] = useState(0);
 	const [total, setTotal] = useState(0);
@@ -49,7 +52,7 @@ function Dashboard() {
 			<header className="navbar">
 				<h1 className="logo">Tracker79</h1>
 				<button className="logout-btn" onClick={userLogout}>
-					Logout
+					<i className="fa fa-sign-out"></i> Logout
 				</button>
 			</header>
 
@@ -63,9 +66,18 @@ function Dashboard() {
 			<div className="section-action">
 				<h3>Investment History</h3>
 
-				<button className="btn-primary" onClick={() => setaddModal(true)}>
-					<b>+</b> Add Data
-				</button>
+				<div className="btn-group">
+					<button className="btn-secondary">
+						<i className="fa fa-line-chart"></i>
+					</button>
+
+					<button className="btn-primary" onClick={() => setaddModal(true)}>
+						<b className="add-Btn">
+							<i className="fa fa-plus"></i>{' '}
+							<span className="add-text">Add Data</span>
+						</b>
+					</button>
+				</div>
 			</div>
 
 			<section className="list-section">
@@ -82,14 +94,13 @@ function Dashboard() {
 					</div>
 
 					{records.map((record) => {
+
 						return (
 							<List
 								key={record._id}
-								date={formatDate(record.date)}
-								amount={`₹` + record.total.toFixed(2)}
-								gold={record.gold + ' gm'}
-								tax={`₹` + record.tax.toFixed(2)}
-								investment={`₹` + record.investment.toFixed(2)}
+								record = {record}
+								deleteModal={setDelModal}
+								setRecordId={setRecordId}
 							/>
 						);
 					})}
@@ -140,6 +151,12 @@ function Dashboard() {
 				display={addModal}
 				closeModal={setaddModal}
 				pageLoader={setReload}
+			/>
+
+			<DeleteModal
+				display={delModal}
+				closeModal={setDelModal}
+				recordId={recordId}
 			/>
 		</div>
 	);

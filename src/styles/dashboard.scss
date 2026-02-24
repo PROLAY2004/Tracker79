@@ -68,13 +68,13 @@
 
 .table-header {
     background: #f3f4f6;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
 }
 
 .table-header span:last-child,
 .table-row span:last-child {
-    min-width: 175px;
+    min-width: 220px;
 }
 
 .table-row {
@@ -136,6 +136,7 @@
 .form-group select:invalid {
     color: #666 !important;
 }
+
 .modal-actions {
     display: flex;
     justify-content: flex-end;
@@ -160,6 +161,17 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.btn-group {
+    display: flex;
+    gap: 5px;
+}
+
+.add-Btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
 .logout-btn {
     background: #fff5f5;
     color: #b91c1c;
@@ -222,9 +234,43 @@
     margin-bottom: 18px;
 }
 
-/* ===============================
-   Pagination
-   =============================== */
+.delete-modal {
+    max-width: 420px;
+}
+
+/* Text */
+.delete-text {
+    margin-top: 8px;
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+/* Danger Button */
+.btn-danger {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-danger:hover {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.btn-danger:active {
+    transform: scale(0.97);
+}
+
 .pagination {
     margin-top: 18px;
     display: flex;
@@ -255,6 +301,10 @@
 }
 
 .action-btn {
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
     padding: 6px 12px;
     font-size: 12px;
     border-radius: 8px;
@@ -336,9 +386,10 @@
 
 @media (max-width: 480px) {
     .summary {
-            grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
             gap: 10px;
         }
+
     .navbar {
         padding: 14px 16px;
     }
@@ -354,14 +405,18 @@
     .modal {
         padding: 22px;
     }
+
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
     .navbar {
         align-items: flex-start;
         gap: 10px;
     }
 
+        .add-text {
+            display: none;
+        }
 }
 
 @media (max-width: 320px) {
@@ -380,4 +435,5 @@
     .modal h3 {
         font-size: 16px;
     }
+
 }

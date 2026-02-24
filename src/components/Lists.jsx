@@ -1,15 +1,31 @@
+import formatDate from '../utils/dateFormater.js';
+
 function List(listDetails) {
 	return (
 		<div className="table-row">
-			<span>{listDetails.date}</span>
-			<span>{listDetails.investment}</span>
-			<span>{listDetails.tax}</span>
-			<span>{listDetails.amount}</span>
-			<span>{listDetails.gold}</span>
+			<span>{formatDate(listDetails.record.date)}</span>
+			<span>{`₹` + listDetails.record.investment.toFixed(2)}</span>
+			<span>{`₹` + listDetails.record.tax.toFixed(2)}</span>
+			<span>{`₹` + listDetails.record.total.toFixed(2)}</span>
+			<span>{listDetails.record.gold + ' gm'}</span>
+
 			<div className="action-btns">
-				<button className="action-btn view-btn">View</button>
-				<button className="action-btn edit-btn">Edit</button>
-				<button className="action-btn delete-btn">Delete</button>
+				<button className="action-btn view-btn">
+					<i className="fa fa-eye"></i> View
+				</button>
+
+				<button className="action-btn edit-btn">
+					<i className="fa fa-edit"></i> Edit
+				</button>
+
+				<button
+					className="action-btn delete-btn"
+					onClick={() => {
+						listDetails.deleteModal(true);
+						listDetails.setRecordId(listDetails.record._id);
+					}}>
+					<i className="fa fa-trash-o"></i> Delete
+				</button>
 			</div>
 		</div>
 	);

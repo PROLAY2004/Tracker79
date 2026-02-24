@@ -135,7 +135,13 @@ function Forget() {
 							disabled={loading}
 							className="auth-btn-primary"
 							type="submit">
-							{loading ? 'Resetting...' : 'Reset Password'}
+							{loading ? (
+								<>
+									<span className="spinner"></span>Resetting...
+								</>
+							) : (
+								'Reset Password'
+							)}
 						</button>
 					</form>
 

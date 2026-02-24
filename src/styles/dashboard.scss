@@ -72,11 +72,6 @@
     font-size: 14px;
 }
 
-.table-header span:nth-child(5),
-.table-row span:nth-child(5) {
-    min-width: 135px;
-}
-
 .table-header span:last-child,
 .table-row span:last-child {
     min-width: 175px;
@@ -130,13 +125,17 @@
     color: #374151;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid #d1d5db;
 }
 
+.form-group select:invalid {
+    color: #666 !important;
+}
 .modal-actions {
     display: flex;
     justify-content: flex-end;

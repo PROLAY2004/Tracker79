@@ -12,12 +12,15 @@ import formatDate from '../../utils/dateFormater.js';
 
 function Dashboard() {
 	const navigate = useNavigate();
+	const [currentPage, setCurrentPage] = useState(1);
+	const [totalPages, setTotalPages] = useState(1);
 	const [addModal, setaddModal] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [reload, setReload] = useState(0);
 	const [total, setTotal] = useState(0);
 	const [invest, setInvest] = useState(0);
 	const [goldQtn, setGoldQtn] = useState(0);
+	const [tax, setTax] = useState(0);
 	const [records, setRecords] = useState([]);
 
 	const userLogout = () => {
@@ -27,8 +30,17 @@ function Dashboard() {
 	};
 
 	useEffect(() => {
-		displayData(setTotal, setInvest, setGoldQtn, setRecords, setLoading);
-	}, [reload]);
+		displayData(
+			setTotal,
+			setInvest,
+			setGoldQtn,
+			setTax,
+			setRecords,
+			setLoading,
+			currentPage,
+			setTotalPages,
+		);
+	}, [reload, currentPage]);
 
 	return (
 		<div className="main-content">
@@ -44,8 +56,8 @@ function Dashboard() {
 			<section className="summary">
 				<Card title={'Total Invested (Including Tax)'} value={'₹' + total} />
 				<Card title={'Total Invested (Excluding Tax)'} value={'₹' + invest} />
+				<Card title={'Total Tax Paid'} value={'₹' + tax} />
 				<Card title={'Total Gold Quantity'} value={goldQtn + ' gm'} />
-				<Card title={'Avg Return'} value={'+00.0%'} color="positive" />
 			</section>
 
 			<div className="section-action">
@@ -62,10 +74,10 @@ function Dashboard() {
 					style={{ display: records.length ? 'block' : 'none' }}>
 					<div className="table-header">
 						<span>Date</span>
-						<span>Amount</span>
+						<span>Investment</span>
+						<span>Tax (3%)</span>
+						<span>Total Amount</span>
 						<span>Gold (gm)</span>
-						<span>Return %</span>
-						<span>Return % (No Tax)</span>
 						<span>Actions</span>
 					</div>
 
@@ -76,8 +88,8 @@ function Dashboard() {
 								date={formatDate(record.date)}
 								amount={`₹` + record.total.toFixed(2)}
 								gold={record.gold + ' gm'}
-								returnPercentage="+0%"
-								returnPercentageNoTax="+0%"
+								tax={`₹` + record.tax.toFixed(2)}
+								investment={`₹` + record.investment.toFixed(2)}
 							/>
 						);
 					})}
@@ -99,11 +111,28 @@ function Dashboard() {
 				</div>
 
 				<div className="pagination">
-					<button className="page-btn">‹</button>
-					<button className="page-btn active">1</button>
-					<button className="page-btn">2</button>
-					<button className="page-btn">3</button>
-					<button className="page-btn">›</button>
+					<button
+						className="page-btn"
+						disabled={currentPage === 1}
+						onClick={() => setCurrentPage((prev) => prev - 1)}>
+						‹
+					</button>
+
+					{[...Array(totalPages)].map((_, index) => (
+						<button
+							key={index + 1}
+							className={`page-btn ${currentPage === index + 1 ? 'active' : ''}`}
+							onClick={() => setCurrentPage(index + 1)}>
+							{index + 1}
+						</button>
+					))}
+
+					<button
+						className="page-btn"
+						disabled={currentPage === totalPages}
+						onClick={() => setCurrentPage((prev) => prev + 1)}>
+						›
+					</button>
 				</div>
 			</section>
 

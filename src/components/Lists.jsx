@@ -10,10 +10,6 @@ function List(listDetails) {
 			<span>{listDetails.record.gold + ' gm'}</span>
 
 			<div className="action-btns">
-				<button className="action-btn view-btn">
-					<i className="fa fa-eye"></i> View
-				</button>
-
 				<button
 					className="action-btn edit-btn"
 					onClick={() => {

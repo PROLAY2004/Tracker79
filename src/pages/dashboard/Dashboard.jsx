@@ -7,6 +7,7 @@ import Loader from '../../components/PageLoader.jsx';
 import List from '../../components/Lists.jsx';
 import AddModal from '../../components/AddModal.jsx';
 import EditModal from '../../components/EditModal.jsx';
+import AnalyticsModal from '../../components/AnalyticsModal.jsx';
 import DeleteModal from '../../components/DeleteModal.jsx';
 import displayData from './fetchData.js';
 import logout from './logout.js';
@@ -16,10 +17,10 @@ function Dashboard() {
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
-
 	const [addModal, setaddModal] = useState(false);
 	const [delModal, setDelModal] = useState(false);
 	const [editModal, setEditModal] = useState(false);
+	const [analyticsModal, setAnalyticsModal] = useState(false);
 	const [recordId, setRecordId] = useState('');
 	const [recordDetails, setRecordDetails] = useState({});
 	const [loading, setLoading] = useState(false);
@@ -73,6 +74,7 @@ function Dashboard() {
 				<div className="btn-group">
 					<button
 						className="btn-secondary"
+						onClick={() => setAnalyticsModal(true)}
 						style={{ display: records.length ? 'block' : 'none' }}>
 						<i className="fa fa-line-chart"></i>
 					</button>
@@ -172,7 +174,10 @@ function Dashboard() {
 				closeModal={setEditModal}
 				recordDetails={recordDetails}
 				setRecordDetails={setRecordDetails}
+				pageLoader={setReload}
 			/>
+
+			<AnalyticsModal display={analyticsModal} closeModal={setAnalyticsModal} />
 		</div>
 	);
 }

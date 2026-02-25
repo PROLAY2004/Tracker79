@@ -3,8 +3,10 @@ import {
 	investmentCalculator,
 	taxCalculator,
 } from '../pages/dashboard/formCalculate.js';
+import editFormSubmit from '../pages/dashboard/editFormSubmit.js';
 
 function EditModal(modalData) {
+	const recordId = modalData.recordDetails._id;
 	const [loading, setLoading] = useState(false);
 	const [editDate, setEditDate] = useState('');
 	const [editAmount, setEditAmount] = useState(0);
@@ -13,19 +15,21 @@ function EditModal(modalData) {
 	const [editGold, setEditGold] = useState(0);
 
 	useEffect(() => {
-		if (modalData.recordDetails) {
-			setEditDate(modalData.recordDetails.date);
-			setEditAmount(modalData.recordDetails.total);
-			setEditInvestment(modalData.recordDetails.investment);
-			setEditTax(modalData.recordDetails.tax);
-			setEditGold(modalData.recordDetails.gold);
-		}
+		setEditDate(modalData.recordDetails.date);
+		setEditAmount(modalData.recordDetails.total);
+		setEditInvestment(modalData.recordDetails.investment);
+		setEditTax(modalData.recordDetails.tax);
+		setEditGold(modalData.recordDetails.gold);
 	}, [modalData.display]);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log('form Submitted');
-		setLoading(true);
+		const isUpdated = await editFormSubmit(e, recordId, setLoading);
+
+		if (isUpdated) {
+			modalData.closeModal(false);
+			modalData.pageLoader((prev) => prev + 1);
+		}
 	};
 
 	return (

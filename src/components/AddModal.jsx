@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import addFormSubmit from '../pages/dashboard/addFormSubmit.js';
+import { getCurrentDate } from '../utils/dateFormater.js';
 import {
 	investmentCalculator,
 	taxCalculator,
@@ -9,7 +10,12 @@ function AddModal(modalData) {
 	const [loading, setLoading] = useState(false);
 	const [totalAmount, setTotalAmount] = useState('');
 	const [investment, setInvestment] = useState('');
+	const [date, setDate] = useState('');
 	const [tax, setTax] = useState('');
+
+	useEffect(() => {
+		setDate(getCurrentDate());
+	}, [modalData.display]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -37,7 +43,12 @@ function AddModal(modalData) {
 
 				<div className="form-group">
 					<label>Date</label>
-					<input type="date" name="date" />
+					<input
+						type="date"
+						name="date"
+						value={date}
+						onChange={(e) => setDate(e.target.value)}
+					/>
 				</div>
 
 				<div className="form-group">

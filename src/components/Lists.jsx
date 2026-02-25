@@ -1,4 +1,4 @@
-import formatDate from '../utils/dateFormater.js';
+import { formatDate } from '../utils/dateFormater.js';
 
 function List(listDetails) {
 	return (

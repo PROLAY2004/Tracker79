@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 function AnalyticsModal(modalData) {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
-	const [sellingPrice, setSellingPrice] = useState('');
+	const [price, setSellingPrice] = useState('');
 
 	const handleSuibmit = (e) => {
 		e.preventDefault();
-		const price = e.target.price.value;
+		const sellingPrice = e.target.price.value;
 
 		navigate('/analytics', {
-			state: { price },
+			state: { sellingPrice },
 		});
 	};
 
@@ -35,7 +35,7 @@ function AnalyticsModal(modalData) {
 						name="price"
 						placeholder="Eg: 6150.50"
 						required
-						value={sellingPrice}
+						value={price}
 						onChange={(e) => setSellingPrice(e.target.value)}
 					/>
 				</div>

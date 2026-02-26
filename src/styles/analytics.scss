@@ -1,0 +1,291 @@
+@import './root';
+
+
+.container {
+    padding: 20px 32px;
+    width: 100%;
+}
+
+/* ----- TOP CARDS – desktop 5 cols, mobile overridden later ----- */
+.top-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 26px;
+    padding: 18px 16px;
+    box-shadow: 0 12px 30px -8px rgba(0, 20, 40, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card p {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0f1825;
+    line-height: 1.2;
+}
+
+.selling-card {
+    background: linear-gradient(145deg, #fefaf5, #fffcf0);
+    border-left: 4px solid #fbbf24;
+}
+
+.icon-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: white;
+    border: 2px solid #121212;
+    border-radius: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+    color: #475569;
+    cursor: pointer;
+    border: 1px solid #f1f5f9;
+}
+
+.positive {
+    color: #0d9488;
+}
+
+/* filter row + pagination controls */
+.filter-pagination-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    gap: 14px;
+}
+
+.time-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: #ffffffd4;
+    padding: 6px 8px;
+    border-radius: 60px;
+    width: fit-content;
+    backdrop-filter: blur(4px);
+    border: 1px solid #ffffff;
+    box-shadow: 0 6px 14px rgba(0, 6, 20, 0.04);
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #4b5565;
+    cursor: pointer;
+    transition: 0.18s;
+    white-space: nowrap;
+}
+
+.filter-btn.active {
+    background: #121826;
+    color: white;
+    box-shadow: 0 8px 16px -6px rgba(18, 24, 38, 0.2);
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.page-btn {
+    background: white;
+    border: 1px solid #dde2e9;
+    border-radius: 40px;
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1e293b;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.page-btn:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    background: #f1f4f8;
+}
+
+.page-btn:not(:disabled):hover {
+    background: #f0f2f5;
+    border-color: #b9c3d1;
+}
+
+#pageIndicator {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2e405b;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* charts */
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.chart-card {
+    background: #ffffff;
+    border-radius: 32px;
+    padding: 22px 18px 18px 18px;
+    box-shadow: 0 20px 40px -14px rgba(8, 20, 40, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.chart-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2c3a4b;
+    margin-bottom: 18px;
+    padding-left: 4px;
+}
+
+.chart-card canvas {
+    max-height: 200px;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.chart-card.full canvas {
+    max-height: 240px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+    .top-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .top-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chart-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* mobile: selling card full width, then 2x2 */
+@media (max-width: 520px) {
+    .container {
+        padding: 16px 14px;
+    }
+
+    .top-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .top-cards .card:first-child {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .card {
+        padding: 16px 12px;
+        border-radius: 24px;
+    }
+
+    .card p {
+        font-size: 0.65rem;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+    }
+
+    .filter-pagination-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .time-filters {
+        width: 100%;
+        justify-content: center;
+        padding: 5px;
+    }
+
+    .filter-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 8px 5px;
+        font-size: 0.8rem;
+    }
+
+    .pagination-controls {
+        justify-content: center;
+    }
+
+    .chart-card {
+        border-radius: 28px;
+        padding: 18px 14px;
+    }
+
+    .icon-btn {
+        width: 28px;
+        height: 28px;
+        top: 8px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .card h2 {
+        font-size: 1.1rem;
+    }
+
+    .filter-btn {
+        font-size: 0.7rem;
+        padding: 7px 3px;
+    }
+
+    .page-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}

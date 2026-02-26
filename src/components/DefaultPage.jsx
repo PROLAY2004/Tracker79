@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ErrorPage() {
 	return (
-		<div className="container">
+		<div className="error-container">
 			<div className="gif">
 				<img src="https://i.postimg.cc/2yrFyxKv/giphy.gif" alt="gif_ing" />
 			</div>

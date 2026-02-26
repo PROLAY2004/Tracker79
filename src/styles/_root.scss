@@ -12,6 +12,22 @@ body {
     color: $secondary-color;
 }
 
+/* Navbar */
+.navbar {
+    background: #ffffff;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    margin: auto 0;
+}
+
 /* Buttons */
 .btn-primary {
     display: flex;
@@ -39,6 +55,32 @@ body {
 .btn-secondary:hover {
     background-color: rgb(206, 206, 206);
 }
+
+/* Danger Button */
+.btn-danger {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    display: flex;
+    gap: 5px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-danger:hover {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.btn-danger:active {
+    transform: scale(0.97);
+}
+
 
 @media (max-width: 480px) {
     .btn-primary {

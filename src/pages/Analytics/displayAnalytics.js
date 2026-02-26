@@ -21,11 +21,14 @@ const fetchAnalytics = async (
 		const result = await response.json();
 		if (result.success) {
 			setStats(result.data);
+			return true;
 		} else {
 			showToast('error', result.message);
+			return false;
 		}
 	} catch (error) {
 		showToast('error', error.message);
+		return false;
 	} finally {
 		setLoading(false);
 	}

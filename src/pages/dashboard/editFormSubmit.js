@@ -9,7 +9,7 @@ export default async function editFormSubmit(e, recordId, setLoading) {
 		const investment = e.target.investment.value;
 		const goldQuantity = investment / buyingPrice;
 
-		const response = await apiInterceptor('PATCH', '/user/account/dashboard', {
+		const response = await apiInterceptor('PUT', '/user/account/dashboard', {
 			recordId,
 			date: e.target.date.value,
 			investment,
@@ -29,7 +29,6 @@ export default async function editFormSubmit(e, recordId, setLoading) {
 		}
 	} catch (err) {
 		showToast('error', err.message);
-
 		return false;
 	} finally {
 		setLoading(false);

@@ -45,6 +45,14 @@ export default async function apiInterceptor(method, endpoint, body = null) {
 				);
 				break;
 
+			case 'PUT':
+				response = await api.putApi(
+					`${configaration.BASE_URL}${endpoint}`,
+					access_token,
+					body,
+				);
+				break;
+
 			default:
 				throw new Error('No Method Provided');
 		}

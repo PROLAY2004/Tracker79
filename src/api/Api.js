@@ -46,6 +46,23 @@ export default class Api {
 		}
 	};
 
+	putApi = async (url, token, reqBody = {}) => {
+		try {
+			const res = await fetch(url, {
+				method: 'PUT',
+				headers: {
+					Authorization: `Bearer ${token}`,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(reqBody),
+			});
+
+			return res;
+		} catch (err) {
+			throw new Error(err);
+		}
+	};
+
 	deleteApi = async (url, token, reqBody = {}) => {
 		try {
 			const res = await fetch(url, {

@@ -103,6 +103,16 @@ body {
     border-radius: 10px;
 }
 
+.positive {
+    color: #059669 !important;
+    font-weight: 600;
+}
+
+.negative {
+    color: #dc2626 !important;
+    font-weight: 600;
+}
+
 /* Toast container */
 .toast-container {
     position: fixed;

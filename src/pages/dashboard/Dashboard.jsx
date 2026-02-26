@@ -119,7 +119,7 @@ function Dashboard() {
 
 				<div className="pagination">
 					<button
-						className="page-btn"
+						className="dashboard-page-btn"
 						disabled={currentPage === 1}
 						onClick={() => setCurrentPage((prev) => prev - 1)}>
 						‹
@@ -128,14 +128,14 @@ function Dashboard() {
 					{[...Array(totalPages)].map((_, index) => (
 						<button
 							key={index + 1}
-							className={`page-btn ${currentPage === index + 1 ? 'active' : ''}`}
+							className={`dashboard-page-btn ${currentPage === index + 1 ? 'active' : ''}`}
 							onClick={() => setCurrentPage(index + 1)}>
 							{index + 1}
 						</button>
 					))}
 
 					<button
-						className="page-btn"
+						className="dashboard-page-btn"
 						disabled={currentPage === totalPages || records.length == 0}
 						onClick={() => setCurrentPage((prev) => prev + 1)}>
 						›

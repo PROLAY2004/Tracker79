@@ -15,9 +15,7 @@ function DeleteModal(modalData) {
 				<h3>Delete Investment</h3>
 
 				<p className="delete-text">
-					Are you sure you want to delete this investment?
-					<br />
-					This action cannot be undone.
+					Are you sure you want to delete this investment? This action cannot be undone!
 				</p>
 
 				<div className="modal-actions">

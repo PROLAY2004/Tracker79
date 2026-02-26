@@ -9,17 +9,19 @@ function EditModal(modalData) {
 	const recordId = modalData.recordDetails._id;
 	const [loading, setLoading] = useState(false);
 	const [editDate, setEditDate] = useState('');
-	const [editAmount, setEditAmount] = useState(0);
-	const [editInvestment, setEditInvestment] = useState(0);
-	const [editTax, setEditTax] = useState(0);
-	const [editGold, setEditGold] = useState(0);
+	const [editAmount, setEditAmount] = useState('');
+	const [editInvestment, setEditInvestment] = useState('');
+	const [editTax, setEditTax] = useState('');
+	const [editGold, setEditGold] = useState('');
 
 	useEffect(() => {
+		const investment = modalData.recordDetails.investment;
+
 		setEditDate(modalData.recordDetails.date);
 		setEditAmount(modalData.recordDetails.total);
-		setEditInvestment(modalData.recordDetails.investment);
+		setEditInvestment(investment);
 		setEditTax(modalData.recordDetails.tax);
-		setEditGold(modalData.recordDetails.gold);
+		setEditGold(investment / modalData.recordDetails.gold);
 	}, [modalData.display]);
 
 	const handleSubmit = async (e) => {
@@ -55,7 +57,7 @@ function EditModal(modalData) {
 					<input
 						type="number"
 						name="totalAmount"
-						value={editAmount || 0}
+						value={editAmount || ''}
 						onChange={(e) =>
 							investmentCalculator(
 								e,
@@ -77,7 +79,7 @@ function EditModal(modalData) {
 							taxCalculator(e, setEditInvestment, setEditTax, editAmount)
 						}
 						placeholder="Eg: 145611.31"
-						value={editInvestment || 0}
+						value={editInvestment || ''}
 					/>
 				</div>
 
@@ -88,18 +90,18 @@ function EditModal(modalData) {
 						name="tax"
 						readOnly
 						placeholder="Eg: 4388.69"
-						value={editTax || 0}
+						value={editTax || ''}
 					/>
 				</div>
 
 				<div className="form-group">
-					<label>Total Gold Got (gm)</label>
+					<label>Gold Buying Price (₹/gm)</label>
 					<input
 						type="number"
-						step={0.00001}
-						name="gold"
+						step={0.01}
+						name="buyingPrice"
 						placeholder="Eg: 9.500"
-						value={editGold || 0}
+						value={editGold || ''}
 						onChange={(e) => setEditGold(e.target.value)}
 					/>
 				</div>

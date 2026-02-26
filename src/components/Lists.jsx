@@ -7,7 +7,7 @@ function List(listDetails) {
 			<span>{`₹` + listDetails.record.investment.toFixed(2)}</span>
 			<span>{`₹` + listDetails.record.tax.toFixed(2)}</span>
 			<span>{`₹` + listDetails.record.total.toFixed(2)}</span>
-			<span>{listDetails.record.gold + ' gm'}</span>
+			<span>{listDetails.record.gold.toFixed(4) + ' gm'}</span>
 
 			<div className="action-btns">
 				<button

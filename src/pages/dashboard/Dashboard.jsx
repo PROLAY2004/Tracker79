@@ -48,7 +48,7 @@ function Dashboard() {
 			<Nav />
 
 			<section className="summary">
-				<Card title={'Total Invested (Including Tax)'} value={'₹' + total} />
+				<Card title={'TOTAL INVESTED (INCLUDING TAX)'} value={'₹' + total} />
 				<Card title={'Total Invested (Excluding Tax)'} value={'₹' + invest} />
 				<Card title={'Total Tax Paid'} value={'₹' + tax} />
 				<Card title={'Total Gold Quantity'} value={goldQtn + ' gm'} />

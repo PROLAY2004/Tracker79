@@ -89,12 +89,12 @@ function AddModal(modalData) {
 				</div>
 
 				<div className="form-group">
-					<label>Total Gold Got (gm)</label>
+					<label>Gold Buying Price (₹/gm)</label>
 					<input
 						type="number"
-						step={0.00001}
-						name="gold"
-						placeholder="Eg: 9.500"
+						step={0.01}
+						name="buyingPrice"
+						placeholder="Eg: 9500"
 					/>
 				</div>
 

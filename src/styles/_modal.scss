@@ -1,0 +1,294 @@
+/* Modal */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: #ffffff;
+    padding: 32px;
+    width: 420px;
+    border-radius: 28px;
+    max-height: 95vh;
+    overflow-y: auto;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal h3 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.modal h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #111827, #4b5563);
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.form-group:focus-within label {
+    color: #111827;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid #e9eef3;
+    font-size: 15px;
+    transition: all 0.25s ease;
+    background: #ffffff;
+    color: #0f172a;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #cbd5e1;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #111827;
+    box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.01);
+    background: #ffffff;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid #e9eef3;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-group input[type="date"]:focus {
+    border-color: #111827;
+}
+
+.form-group input[readonly] {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    color: #475569;
+    cursor: not-allowed;
+}
+
+/* Analytics Modal Specific */
+.analytics-text {
+    margin: 8px 0 28px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #475569;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 20px;
+    border-left: 4px solid #111827;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.delete-text {
+    margin-top: 8px;
+    margin-bottom: 28px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #475569;
+    background: #fef2f2;
+    padding: 24px;
+    border-radius: 20px;
+    border-left: 4px solid #dc2626;
+    box-shadow: inset 0 2px 6px rgba(220, 38, 38, 0.02);
+    font-weight: 500;
+}
+
+
+/* Custom scrollbar for modal */
+.modal::-webkit-scrollbar {
+    width: 0px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+    .modal {
+        width: 92%;
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .modal h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group input[type="date"] {
+        padding: 12px 16px;
+        border-radius: 16px;
+    }
+
+    .modal-actions {
+        margin-top: 28px;
+        padding-top: 20px;
+    }
+
+    .modal-actions .btn-secondary,
+    .modal-actions .btn-primary,
+    .modal-actions .btn-danger {
+        padding: 10px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 22px;
+        width: 95%;
+        border-radius: 22px;
+    }
+
+    .modal h3 {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .modal h3::after {
+        width: 50px;
+        height: 3px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group label {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group input[type="date"] {
+        padding: 12px 14px;
+        font-size: 14px;
+        border-radius: 16px;
+    }
+
+    .analytics-text,
+    .delete-text {
+        padding: 16px;
+        margin: 8px 0 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 320px) {
+    .modal {
+        padding: 18px;
+    }
+
+    .modal h3 {
+        font-size: 18px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+    }
+}

@@ -6,6 +6,7 @@ import Signin from '../pages/auth/signin/Login.jsx';
 import Signup from '../pages/auth/signup/Register.jsx';
 import Forget from '../pages/auth/reset/Forget.jsx';
 import Dashboard from '../pages/dashboard/Dashboard.jsx';
+import Analytics from '../pages/Analytics/Analytics.jsx';
 import ErrorPage from '../components/DefaultPage';
 
 const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
 		path: '/analytics',
 		element: (
 			<ProtectedRoute>
-				<h1>Analytics page</h1>
+				<Analytics />
 			</ProtectedRoute>
 		),
 	},

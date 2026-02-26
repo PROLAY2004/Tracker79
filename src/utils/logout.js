@@ -1,4 +1,4 @@
-import showToast from '../../utils/showToast.js';
+import showToast from './showToast.js';
 
 export default function logout() {
 	localStorage.clear();

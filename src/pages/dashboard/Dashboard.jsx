@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import '../../styles/dashboard.scss';
+import Nav from '../../components/Navbar.jsx';
 import Card from '../../components/Cards.jsx';
 import Loader from '../../components/PageLoader.jsx';
 import List from '../../components/Lists.jsx';
@@ -10,11 +10,8 @@ import EditModal from '../../components/EditModal.jsx';
 import AnalyticsModal from '../../components/AnalyticsModal.jsx';
 import DeleteModal from '../../components/DeleteModal.jsx';
 import displayData from './fetchData.js';
-import logout from './logout.js';
 
 function Dashboard() {
-	const navigate = useNavigate();
-
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
 	const [addModal, setaddModal] = useState(false);
@@ -30,12 +27,6 @@ function Dashboard() {
 	const [goldQtn, setGoldQtn] = useState(0);
 	const [tax, setTax] = useState(0);
 	const [records, setRecords] = useState([]);
-
-	const userLogout = () => {
-		if (logout()) {
-			navigate('/login', { replace: true });
-		}
-	};
 
 	useEffect(() => {
 		displayData(
@@ -54,12 +45,7 @@ function Dashboard() {
 		<div className="main-content">
 			<Loader display={loading} />
 
-			<header className="navbar">
-				<h1 className="logo">Tracker79</h1>
-				<button className="logout-btn" onClick={userLogout}>
-					<i className="fa fa-sign-out"></i> Logout
-				</button>
-			</header>
+			<Nav />
 
 			<section className="summary">
 				<Card title={'Total Invested (Including Tax)'} value={'₹' + total} />

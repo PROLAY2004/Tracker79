@@ -1,12 +1,25 @@
 import { useState } from 'react';
-import addFormSubmit from '../pages/dashboard/addFormSubmit.js';
+import { useNavigate } from 'react-router-dom';
 
 function AnalyticsModal(modalData) {
+	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
+	const [sellingPrice, setSellingPrice] = useState('');
+
+	const handleSuibmit = (e) => {
+		e.preventDefault();
+		const price = e.target.price.value;
+
+		navigate('/analytics', {
+			state: { price },
+		});
+	};
+
 	return (
 		<div
 			className="modal-backdrop"
 			style={{ display: modalData.display ? 'flex' : 'none' }}>
-			<form className="modal analytics-modal">
+			<form className="modal analytics-modal" onSubmit={handleSuibmit}>
 				<h3>Analytics Setup</h3>
 
 				<p className="analytics-text">
@@ -16,7 +29,15 @@ function AnalyticsModal(modalData) {
 
 				<div className="form-group">
 					<label>Current Gold Selling Price (₹ / gm)</label>
-					<input type="number" step="0.01" placeholder="Eg: 6150.50" required />
+					<input
+						type="number"
+						step="0.01"
+						name="price"
+						placeholder="Eg: 6150.50"
+						required
+						value={sellingPrice}
+						onChange={(e) => setSellingPrice(e.target.value)}
+					/>
 				</div>
 
 				<div className="modal-actions">
@@ -24,10 +45,16 @@ function AnalyticsModal(modalData) {
 						type="button"
 						className="btn-secondary"
 						onClick={() => modalData.closeModal(false)}>
-						Cancel
+						Close
 					</button>
-					<button type="submit" className="btn-primary">
-						View Analytics
+					<button type="submit" disabled={loading} className="btn-primary">
+						{loading ? (
+							<>
+								<span className="spinner"></span> Redirecting...
+							</>
+						) : (
+							'View Analytics '
+						)}
 					</button>
 				</div>
 			</form>

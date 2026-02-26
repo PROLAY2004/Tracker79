@@ -11,7 +11,7 @@ import ErrorPage from '../components/DefaultPage';
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Home/>
+		element: <Home />,
 	},
 	{
 		path: '/login',
@@ -30,6 +30,14 @@ const router = createBrowserRouter([
 		element: (
 			<ProtectedRoute>
 				<Dashboard />
+			</ProtectedRoute>
+		),
+	},
+	{
+		path: '/analytics',
+		element: (
+			<ProtectedRoute>
+				<h1>Analytics page</h1>
 			</ProtectedRoute>
 		),
 	},

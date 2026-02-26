@@ -25,7 +25,7 @@ function DeleteModal(modalData) {
 						className="btn-secondary"
 						type="button"
 						onClick={() => modalData.closeModal(false)}>
-						Cancel
+						Close
 					</button>
 					<button
 						disabled={loading}

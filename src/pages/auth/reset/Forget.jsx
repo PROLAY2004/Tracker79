@@ -146,7 +146,7 @@ function Forget() {
 					</form>
 
 					<p className="footer-text">
-						Didn’t receive the code?{' '}
+						Didn’t receive the code?
 						<strong style={{ display: timeLeft ? 'inline' : 'none' }}>
 							{Math.floor(timeLeft / 60)}:
 							{String(timeLeft % 60).padStart(2, '0')}

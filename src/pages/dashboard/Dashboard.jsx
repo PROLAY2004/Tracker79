@@ -52,7 +52,6 @@ function Dashboard() {
 				<Card title={'Total Invested (WITHOUT Tax)'} value={'₹' + invest} />
 				<Card title={'Total Tax Paid'} value={'₹' + tax} />
 				<Card title={'Total Gold Quantity'} value={goldQtn + ' gm'} />
-				<Card title={'SELLING PROFIT'} value={'₹0'} />
 			</section>
 
 			<div className="section-action">
